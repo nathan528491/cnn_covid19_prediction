@@ -13,18 +13,15 @@ Contributeurs au projet :
 Chef de projet :
 - Gaël Penessot
 
-A l’aide d’une banque d’images de radiographies pulmonaires librement disponibles sur le site web Kaggle, nous avons entrainé des modèles de deep learning afin de vérifier si les techniques d'apprentissage profond (deep
-learning) sont capable de détecter efficacement la présence, ou non, de COVID-19.
+Nous avons utilisé une banque d'images de radiographies pulmonaires, disponibles en libre accès sur le site web Kaggle, pour entraîner des modèles de deep learning. Notre objectif était de vérifier la capacité des techniques d'apprentissage profond à détecter efficacement la présence ou l'absence de COVID-19.
 
-Les meilleures parmi ces modèles se sont révélés très efficaces, avec une précision de plus de 90 % dans la détection de la présence de Covid-19 et d'autres maladies dans les poumons. Nous pensons que ce projet démontre
-la pertinence de ces techniques de deep learning dans le contexte médical. Dans les environnements où les tests (tels que la PCR) et les capacités du personnel des établissements médicaux sont limités, comme lors de la
-pandémie de Covid-19, des modèles tels que ceux que nous avons testés dans le cadre de ce projet peuvent être utiles pour identifier les patients qui ont besoin de soins.
+Les modèles les plus performants ont montré une précision supérieure à 90 % dans la détection de la COVID-19 et d'autres pathologies pulmonaires. Ce projet illustre donc la pertinence des techniques de deep learning dans un contexte médical. Dans des situations où les tests de diagnostic (comme le test PCR) et les ressources humaines médicales sont limitées, notamment durant la pandémie de COVID-19, des modèles comme ceux que nous avons développés peuvent s'avérer utiles pour identifier les patients nécessitant des soins.
 
-Pour en savoir plus sur le contexte, la méthodologie et les résultats, veuillez consulter le rapport dans ce dépôt.
+Pour plus d'informations sur le contexte, la méthodologie et les résultats, nous vous invitons à consulter le rapport disponible dans ce dépôt.
 
 Les [notebooks](./notebooks) contenant nos codes python et le [jeu de données](./data) composé de 20000 images de radiographies pulmonaires sont à votre disposition.
 
-Une présentation et démonstration de nos modèles sont aussi disponibles dans une application [Streamlit](./streamlit_app).
+Une présentation et une démonstration de nos modèles sont aussi disponibles dans une application [Streamlit](./streamlit_app).
 
 les exigences pour l'installation peuvent être trouvées :
 
