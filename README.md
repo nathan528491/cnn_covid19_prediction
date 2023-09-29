@@ -10,6 +10,9 @@ Contributeurs au projet :
 - Nathan Lancman
 - Hassan Burke
 
+Chef de projet :
+- Gaël Penessot
+
 A l’aide d’une banque d’images de radiographies pulmonaires librement disponibles sur le site web Kaggle, nous avons entrainé des modèles de deep learning afin de vérifier si les techniques d'apprentissage profond (deep
 learning) sont capable de détecter efficacement la présence, ou non, de COVID-19.
 
