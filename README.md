@@ -1,44 +1,29 @@
-# ProjectTemplate
+# CoviNet : Détection de la COVID-19 grâce au deep learning
 
-## Explanations and Instructions
+## Présentation
 
-This repository contains the files needed to initialize a project for your [DataScientest](https://datascientest.com/) training.
+Ce projet fait partie de la formation [Data Scientist Bootcamp](https://datascientest.com/en/data-scientist-course) dispensée par [DataScientest](https://datascientest.com/) et co-certifiée avec MinesParisTech PSL.
 
-It contains mainly the present README.md file and an application template [Streamlit](https://streamlit.io/).
+Contributeurs au projet :
+- Juliette Greco
+- Matthieu Khairallah
+- Nathan Lancman
+- Hassan Burke
 
-**README**
+A l’aide d’une banque d’images de radiographies pulmonaires librement disponibles sur le site web Kaggle, nous avons entrainé des modèles de deep learning afin de vérifier si les techniques d'apprentissage profond (deep
+learning) sont capable de détecter efficacement la présence, ou non, de COVID-19.
 
-The README.md file is a central element of any git repository. It allows you to present your project, its objectives, and to explain how to install and launch the project, or even how to contribute to it.
+Les meilleures parmi ces modèles se sont révélés très efficaces, avec une précision de plus de 90 % dans la détection de la présence de Covid-19 et d'autres maladies dans les poumons. Nous pensons que ce projet démontre
+la pertinence de ces techniques de deep learning dans le contexte médical. Dans les environnements où les tests (tels que la PCR) et les capacités du personnel des établissements médicaux sont limités, comme lors de la
+pandémie de Covid-19, des modèles tels que ceux que nous avons testés dans le cadre de ce projet peuvent être utiles pour identifier les patients qui ont besoin de soins.
 
-You will have to modify different sections of this README.md to include the necessary informations.
+Pour en savoir plus sur le contexte, la méthodologie et les résultats, veuillez consulter le rapport dans ce dépôt.
 
-- Complete the sections (`## Presentation and Installation` `## Streamlit App`) following the instructions in these sections.
-- Delete this section (`## Explanations and Instructions`)
+Les [notebooks](./notebooks) contenant nos codes python et le [jeu de données](./data) composé de 20000 images de radiographies pulmonaires sont à votre disposition.
 
-**Streamlit Application**
+Une présentation et démonstration de nos modèles sont aussi disponibles dans une application [Streamlit](./streamlit_app).
 
-A [Streamlit] application template (https://streamlit.io/) is available in the [streamlit_app](streamlit_app) folder. You can use this template to start with your project.
-
-## Presentation and Installation
-
-Complete this section with a brief description of your project, the context (including a link to the DataScientest course), and the objectives.
-
-You can also add a brief presentation of the team members with links to your respective networks (GitHub and/or LinkedIn for example).
-
-**Example:**
-
-This repository contains the code for our project **PROJECT_NAME**, developed during our [Data Scientist training](https://datascientest.com/en/data-scientist-course) at [DataScientest](https://datascientest.com/).
-
-The goal of this project is to **...**
-
-This project was developed by the following team :
-
-- John Doe ([GitHub](https://github.com/) / [LinkedIn](http://linkedin.com/))
-- Martin Dupont ([GitHub](https://github.com/) / [LinkedIn](http://linkedin.com/))
-
-You can browse and run the [notebooks](./notebooks). 
-
-You will need to install the dependencies (in a dedicated environment) :
+les exigences pour l'installation peuvent être trouvées :
 
 ```
 pip install -r requirements.txt
@@ -46,15 +31,13 @@ pip install -r requirements.txt
 
 ## Streamlit App
 
-**Add explanations on how to use the app.**
-
-To run the app (be careful with the paths of the files in the app):
+Pour lancer l'appli:
 
 ```shell
 conda create --name my-awesome-streamlit python=3.9
 conda activate my-awesome-streamlit
 pip install -r requirements.txt
-streamlit run app.py
+streamlit run 1_🏠_Intro.py.py
 ```
 
-The app should then be available at [localhost:8501](http://localhost:8501).
+L'appli sera disponible à [localhost:8501](http://localhost:8501).
