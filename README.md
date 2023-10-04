@@ -37,7 +37,7 @@ Pour lancer l'appli:
 conda create --name my-awesome-streamlit python=3.9
 conda activate my-awesome-streamlit
 pip install -r requirements.txt
-streamlit run 1_🏠_Intro.py.py
+streamlit run app.py
 ```
 
 L'appli sera disponible à [localhost:8501](http://localhost:8501).
