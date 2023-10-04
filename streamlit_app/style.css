@@ -46,6 +46,7 @@ section[data-testid="stSidebar"] button[kind="icon"] {
 
 section[data-testid="stSidebar"] .st-bk {
   background-color: white;
+    margin: 2px 0;
 }
 
 section[data-testid="stSidebar"] .st-c0 {

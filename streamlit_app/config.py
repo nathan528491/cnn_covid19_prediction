@@ -11,11 +11,25 @@ TITLE = "My Awesome App"
 
 TEAM_MEMBERS = [
     Member(
-        name="John Doe",
-        linkedin_url="https://www.linkedin.com/in/charlessuttonprofile/",
-        github_url="https://github.com/charlessutton",
+        name="Hassan Burke",
+        linkedin_url="#",
+        github_url="#",
     ),
-    Member("Jane Doe"),
+    Member(
+        name="Matthieu Khairallah",
+        linkedin_url="#",
+        github_url="#",
+    ),
+    Member(
+        name="Juliette Greco",
+        linkedin_url="#",
+        github_url="#",
+    ),
+    Member(
+        name="Nathan Lancman",
+        linkedin_url="#",
+        github_url="#",
+    ),
 ]
 
-PROMOTION = "Promotion Bootcamp Data Scientist - April 2021"
+PROMOTION = "Promotion Bootcamp Data Scientist - July 2023"

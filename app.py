@@ -1,40 +1,40 @@
 from collections import OrderedDict
-
 import streamlit as st
-
-# TODO : change TITLE, TEAM_MEMBERS and PROMOTION values in config.py.
 import streamlit_app.config as config
 
-# TODO : you can (and should) rename and add tabs in the ./tabs folder, and import them here.
-from streamlit_app.tabs import intro, second_tab, third_tab
-
+from streamlit_app.pages import (p1_intro, p2_dataviz, p3_methodologie, p4_modelisation, p5_resultats, p6_modele_demo,
+                                 p7_conclusions)
 
 st.set_page_config(
     page_title=config.TITLE,
     page_icon="https://datascientest.com/wp-content/uploads/2020/03/cropped-favicon-datascientest-1-32x32.png",
 )
 
-with open("streamlit_app/style.css", "r") as f:
-    style = f.read()
+# Chargement du style CSS
+# with open("streamlit_app/style.css", "r") as f:
+#     style = f.read()
+#
+# st.markdown(f"<style>{style}</style>", unsafe_allow_html=True)
 
-st.markdown(f"<style>{style}</style>", unsafe_allow_html=True)
 
-
-# TODO: add new and/or renamed tab in this ordered dict by
-# passing the name in the sidebar as key and the imported tab
-# as value as follow :
+# Pages
 TABS = OrderedDict(
     [
-        (intro.sidebar_name, intro),
-        (second_tab.sidebar_name, second_tab),
-        (third_tab.sidebar_name, third_tab),
+        (p1_intro.sidebar_name, p1_intro),
+        (p2_dataviz.sidebar_name, p2_dataviz),
+        (p3_methodologie.sidebar_name, p3_methodologie),
+        (p4_modelisation.sidebar_name, p4_modelisation),
+        (p5_resultats.sidebar_name, p5_resultats),
+        (p6_modele_demo.sidebar_name, p6_modele_demo),
+        (p7_conclusions.sidebar_name, p7_conclusions),
+
     ]
 )
 
 
 def run():
     st.sidebar.image(
-        "https://dst-studio-template.s3.eu-west-3.amazonaws.com/logo-datascientest.png",
+        "streamlit_app/assets/logo-datascientest.png",
         width=200,
     )
     tab_name = st.sidebar.radio("", list(TABS.keys()), 0)
@@ -46,6 +46,11 @@ def run():
         st.sidebar.markdown(member.sidebar_markdown(), unsafe_allow_html=True)
 
     tab = TABS[tab_name]
+
+    st.write("""
+             # CoviNet
+             ## Détection de la COVID-19 grâce au deep learning
+             """)
 
     tab.run()
 
