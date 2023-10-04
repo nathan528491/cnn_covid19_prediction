@@ -4,7 +4,7 @@ Config file for Streamlit App
 
 """
 
-from member import Member
+from streamlit_app.member import Member
 
 
 TITLE = "My Awesome App"

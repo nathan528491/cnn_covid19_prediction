@@ -57,11 +57,11 @@ def run():
         import streamlit as st
         from PIL import Image
 
-        st.image(Image.open("assets/sample-image.jpg"))
+        st.image(Image.open("streamlit_app/assets/sample-image.jpg"))
 
         ```
 
         """
     )
 
-    st.image(Image.open("assets/sample-image.jpg"))
+    st.image(Image.open("streamlit_app/assets/sample-image.jpg"))
