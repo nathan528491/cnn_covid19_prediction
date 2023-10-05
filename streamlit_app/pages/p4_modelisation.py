@@ -4,27 +4,40 @@ from PIL import Image
 
 sidebar_name = "Modélisation"
 
+# Creation des variables pour les images qu'on va charger plus tard
+lenet = Image.open(r"images\lenet.jpg")
+xception = Image.open(r"images\xception.png")
+vgg = Image.open(r"images\vgg.jpg")
+resnet = Image.open(r"images\resnet.png")
+enet = Image.open(r"images\enet.png")
+conf_lenet = Image.open(r"images\2_lenet_conf.png")
+courbe_lenet = Image.open(r"images\2_lenet_courbe.png")
+conf_resnet = Image.open(r"images\2_resnet_conf.png")
+courbe_resnet = Image.open(r"images\2_resnet_courbe.png")
+conf_xception = Image.open(r"images\2_xcep_conf.png")
+courbe_xception = Image.open(r"images\2_xcep_courbe.png")
+conf_vgg = Image.open(r"images\2_vgg_conf.png")
+courbe_vgg = Image.open(r"images\2_vgg_courbe.png")
+conf_enet = Image.open(r"images\2_enet_conf.png")
+courbe_enet = Image.open(r"images\2_enet_courbe.png")
+resume_sans = Image.open(r"images\2_classes.png")
+resume_masques = Image.open(r"images\2_classes_masques.png")
 
 def run():
     # Titre de la page
     st.markdown("<h2 style='text-align: center; color: black;'>Modélisation </h2>", unsafe_allow_html=True, )
     st.write("---")
 
-    st.write("""
-            Les réseaux neuronaux convolutifs (CNN) excellent dans la classification des images en raison de leur 
-            capacité à apprendre et à extraire automatiquement des caractéristiques hiérarchiques des images.
-            Contrairement aux modèles traditionnels qui nécessitent une ingénierie des caractéristiques réalisée à la
-            main, les CNN peuvent découvrir et utiliser de manière adaptative des motifs et des textures, ce qui les
-            rend très efficaces pour des tâches telles que la reconnaissance d'objets, où des indices visuels complexes
-            jouent un rôle crucial.
-             """)
+    st.markdown("-   Les réseaux neuronaux convolutifs (CNN) sont excellent dans la classification des images en "
+                "raison de leur capacité à apprendre et à extraire automatiquement des caractéristiques hiérarchiques "
+                "des images.")
+    st.markdown("-   Nous avons testé 5 modèles avant d'en choisir un, sur la base de la précision et des exigences "
+                "de calcul. L'architecture Lenet5, un modèle relativement simple, a servi comme référence contre des "
+                "modèles «state of the art»")
+    st.markdown("-   Nous avons d'abord testé les modèles sur deux classes (« sain » et « malade ») afin de "
+                "sélectionner les modèles les plus performants pour la classification des quatre classes.")
 
-    # Creation des variables pour les images qu'on va charger plus tard
-    lenet = Image.open(r"streamlit_app/assets/logo-datascientest.png")
-    xception = Image.open(r"streamlit_app/assets/logo-datascientest.png")
-    vgg = Image.open(r"streamlit_app/assets/logo-datascientest.png")
-    resnet = Image.open(r"streamlit_app/assets/logo-datascientest.png")
-    enet = Image.open(r"streamlit_app/assets/logo-datascientest.png")
+
 
     # Création des tabs pour chaque modèle
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["LeNet5", "ResNet152", "Xception", "VGG16", "EfficientNetB1"])
@@ -34,59 +47,105 @@ def run():
         st.markdown("<h4 style='text-align: center; color: black;'>LeNet5 </h4>", unsafe_allow_html=True, )
         st.write(" ")
         st.image(lenet)
-        st.write("""Parmi les 21.165 images de radiographies pulmonaires dans notre base de données, **48%** des 
-        images représentent des cas normaux, **28%** représentent des cas d'opacité pulmonaire, **17%** des cas 
-        positifs de COVID-19, et **6%** de pneumonie virale.""")
+        st.write("L'architecture de LeNet-5 est structurée avec une alternance de couches convolutives et de couches"
+                 "de mise en commun, suivies de couches entièrement connectées. "
+                 "Il se compose généralement de deux couches convolutives avec activation ReLU, de deux couches de mise"
+                 "en commun maximale et de couches entièrement connectées."
+                 "Même si des modèles plus récents l'ont dépassés, la simplicité de LeNet-5 par rapport"
+                 "à d'autres modèles de classification, le rend efficace en termes de calcul.")
+        st.write("---")
+        st.markdown("<h5 style='text-align: center; color: black;'>Matrice de confusion : Sain vs Malade </h5>",
+                    unsafe_allow_html=True, )
+        st.image(conf_lenet)
+        st.write(" ")
+        st.markdown("<h5 style='text-align: center; color: black;'>Courbe d'entrainement : Sain vs Malade </h5>",
+                    unsafe_allow_html=True, )
+
+        st.image(courbe_lenet)
 
     # Chargement des images et descriptions pour tab 2
     with tab2:
         st.markdown("<h4 style='text-align: center; color: black;'>ResNet152 </h4>", unsafe_allow_html=True, )
         st.write(" ")
         st.image(resnet)
-        st.write("""
-            Afin de se donner un aperçu des images qui constituent notre jeu de données nous
-            avons rédigé un script en Python qui génère une figure avec 12 images sélectionnées au
-            hasard à partir de leurs classes respectives
-            """)
+        st.write("ResNet152 est structuré comme un réseau résiduel profond, avec des blocs résiduels qui permettent"
+                 " un apprentissage très profond du réseau sans le problème du gradient de fuite."
+                 "Sa profondeur exceptionnelle, qui lui permet de capturer des caractéristiques hiérarchiques "
+                 "complexes dans les images, et son efficacité à atteindre une précision de pointe dans diverses tâches"
+                 "de classification d'images.")
+        st.write("---")
+        st.markdown("<h5 style='text-align: center; color: black;'>Matrice de confusion : Sain vs Malade </h5>",
+                    unsafe_allow_html=True, )
+        st.image(conf_resnet)
+        st.write(" ")
+        st.markdown("<h5 style='text-align: center; color: black;'>Courbe d'entrainement : Sain vs Malade </h5>",
+                    unsafe_allow_html=True, )
+        st.image(courbe_resnet)
+
     # Chargement des images et descriptions pour tab 3
     with tab3:
         st.markdown("<h4 style='text-align: center; color: black;'>Xception </h4>", unsafe_allow_html=True, )
         st.write(" ")
         st.image(xception)
-        st.write("""
-            L’image moyenne générée pour chaque classe nous a permis d’observer certaines
-            caractéristiques propres à chaque classe. Nous avons pu ainsi remarquer que
-            les radiographies des sous-classes « COVID » et « Lung_Opacity » semblaient être les
-            plus obstruées dans la région pulmonaire. Inversement, nous avons constaté une opacité
-            nettement différente dans la région pulmonaire dans la sous-classe « Normal ».
-            """)
+        st.write("Xception utilise des convolutions séparables dans le sens de la profondeur. Il est structuré avec "
+                 "plusieurs blocs de convolutions séparables dans le sens de la profondeur, suivis par des connexions "
+                 "de saut et une mise en commun de la moyenne globale. Xception est connu"
+                 " pour ses performances élevées en termes de précision et d'efficacité de calcul, grâce à ses "
+                 "convolutions séparables dans le sens de la profondeur.")
+        st.write("---")
+        st.markdown("<h5 style='text-align: center; color: black;'>Matrice de confusion : Sain vs Malade </h5>",
+                    unsafe_allow_html=True, )
+        st.image(conf_xception)
+        st.write(" ")
+        st.markdown("<h5 style='text-align: center; color: black;'>Courbe d'entrainement : Sain vs Malade </h5>",
+                    unsafe_allow_html=True, )
+        st.image(courbe_xception)
 
     # Chargement des images et descriptions pour tab 4
     with tab4:
         st.markdown("<h4 style='text-align: center; color: black;'>VGG16 </h4>", unsafe_allow_html=True, )
         st.write(" ")
         st.image(vgg)
-        st.write("""
-            L’image moyenne générée pour chaque classe nous a permis d’observer certaines
-            caractéristiques propres à chaque classe. Nous avons pu ainsi remarquer que
-            les radiographies des sous-classes « COVID » et « Lung_Opacity » semblaient être les
-            plus obstruées dans la région pulmonaire. Inversement, nous avons constaté une opacité
-            nettement différente dans la région pulmonaire dans la sous-classe « Normal ».
-            """)
+        st.write("VGG16 est une architecture de réseau neuronal convolutif qui se compose de 16 couches de poids, "
+                 "dont 13 couches convolutives et 3 couches entièrement connectées. Il est connu pour sa simplicité et"
+                 " son architecture uniforme avec de petits filtres convolutifs 3x3. ")
+        st.write("---")
+        st.markdown("<h5 style='text-align: center; color: black;'>Matrice de confusion : Sain vs Malade </h5>",
+                    unsafe_allow_html=True, )
+        st.image(conf_vgg)
+        st.write(" ")
+        st.markdown("<h5 style='text-align: center; color: black;'>Courbe d'entrainement : Sain vs Malade </h5>",
+                    unsafe_allow_html=True, )
+        st.image(courbe_vgg)
 
     # Chargement des images et descriptions pour tab 5
     with tab5:
         st.markdown("<h4 style='text-align: center; color: black;'>EfficientNetB1 </h4>", unsafe_allow_html=True, )
         st.write(" ")
         st.image(enet)
-        st.write("""
-            A l’aide des images moyennes nous avons pu calculer les différences entre la sous-classe
-            « COVID » et le reste. D’une part nous remarquons que face aux images
-            « Normal », l’intensité des pixels dans la région pulmonaire des radiographies
-            « COVID » a tendance être plus élevée. En imagerie, ceci pourrait se traduire, comme
-            nous l’avons vu pour la moyenne des images, d’une obstruction au niveau des poumons.
-            D’autre part, lorsque nous comparons « COVID » et « Viral pneumonia », le constat
-            semble plus mitigé : les zones pulmonaires renvoient des pixels aux valeurs plus élevées
-            dans certaines zones, ce qui pourrait impacter la compréhension des images par notre
-            modèle.
-            """)
+        st.write("""EfficientNetB1 fait partie de la famille EfficientNet d'architectures de réseaux neuronaux, 
+        connues pour leur efficacité en termes de taille de modèle et d'exigences de calcul. EfficientNetB1 utilise 
+        une mise à l'échelle composée pour équilibrer la profondeur, la largeur et la résolution afin d'obtenir un 
+        compromis solide entre la précision et l'efficacité de calcul.. """)
+        st.write("---")
+        st.markdown("<h5 style='text-align: center; color: black;'>Matrice de confusion : Sain vs Malade </h5>",
+                    unsafe_allow_html=True, )
+        st.image(conf_enet)
+        st.write(" ")
+        st.markdown("<h5 style='text-align: center; color: black;'>Courbe d'entrainement : Sain vs Malade </h5>",
+                    unsafe_allow_html=True, )
+        st.image(courbe_enet)
+
+    # Tableau pour resumer les résultats
+    selected_option = st.selectbox("Sélectionner une option", ["Résultats sans masques", "Résultats avec masques"])
+
+    if selected_option == "Résultats sans masques":
+        st.subheader("Résumé des résultats sur 2 classes sans masques")
+        st.image(resume_sans)
+        st.write("Comme attendu, les modèles plus complexes ont généralement obtenu de meilleurs résultats que LeNet5, "
+                 "VGG16 et EfficientNet étant particulièrement performants.")
+    elif selected_option == "Résultats avec masques":
+        st.subheader("Résumé des résultats sur 2 classes avec masques")
+        st.image(resume_masques)
+        st.write("Nous constatons une nette diminution des performances lorsque des masques sont ajoutés, "
+                 "les architectures EfficientNet et ResNet152 conservant leurs performances mieux que les autres.")

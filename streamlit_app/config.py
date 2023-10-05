@@ -7,7 +7,7 @@ Config file for Streamlit App
 from streamlit_app.member import Member
 
 
-TITLE = "My Awesome App"
+TITLE = "CoviNet - Détection de la COVID-19 grâce au deep learning"
 
 TEAM_MEMBERS = [
     Member(
