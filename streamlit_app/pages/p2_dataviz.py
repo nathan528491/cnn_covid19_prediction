@@ -2,7 +2,7 @@
 import streamlit as st
 from PIL import Image
 
-sidebar_name = "DataViz"
+sidebar_name = "📊 DataViz"
 
 # Creation des variables pour les images qu'on va charger plus tard
 class_bar = Image.open(r"images\classes2.png")

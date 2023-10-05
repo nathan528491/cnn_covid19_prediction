@@ -1,6 +1,6 @@
 import streamlit as st
 
-sidebar_name = "Conclusion"
+sidebar_name = "📑 Conclusion"
 
 
 def run():

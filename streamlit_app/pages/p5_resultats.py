@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 
-sidebar_name = "Résultats"
+sidebar_name = "🎯 Résultats"
 
 # Creation des variables pour les images qu'on va charger plus tard
 resume_sans = Image.open(r"images\4_classes.png")

@@ -2,7 +2,7 @@
 import streamlit as st
 from PIL import Image
 
-sidebar_name = "Méthodologie et Préprocessing"
+sidebar_name = "🧪 Méthodologie et Préprocessing"
 
 # Creation des variables pour les images qu'on va charger plus tard
 masque = Image.open(r"images\radio_masquee.png")

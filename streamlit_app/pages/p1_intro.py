@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 
-sidebar_name = "Introduction"
+sidebar_name = "🏠 Introduction"
 
 # Creation des variables pour les images qu'on va charger plus tard
 nnet = Image.open(r"images\nnet7.jpeg")

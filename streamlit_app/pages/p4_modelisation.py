@@ -2,7 +2,7 @@
 import streamlit as st
 from PIL import Image
 
-sidebar_name = "Modélisation"
+sidebar_name = "📐 Modélisation"
 
 # Creation des variables pour les images qu'on va charger plus tard
 lenet = Image.open(r"images\lenet.jpg")

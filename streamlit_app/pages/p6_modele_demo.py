@@ -11,7 +11,7 @@ from PIL import Image
 from keras.models import load_model
 from keras.applications.efficientnet import preprocess_input
 
-sidebar_name = "Modèle démo"
+sidebar_name = "💻 Démo du modèle"
 
 labels_4_classes = ['Covid', 'Lung Opacity', 'Normal', 'Viral Pneumonia']
 labels_2_classes = ['Malade', 'Sain']
