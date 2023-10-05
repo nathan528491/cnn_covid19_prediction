@@ -96,33 +96,31 @@ def grad_cam(img, model, alpha, last_conv_layer_name):
 
 
 # Afficher les images avec les prédictions correctes ou incorrectes ainsi que la heatmap de GradCAM
-def display_predictions(y_pred, y_true, x_test, model, labels, alpha=0.4,
-                        last_conv_layer_name='block5_conv3', correct=True):
-    if labels is None:
-        labels = labels_2_classes
-    title = ''
-    plt.figure(figsize=(12, 12))
-    for i in range(9):
-        plt.subplot(3, 3, i + 1)
-        if correct:
-            number = np.random.choice(np.where(y_pred == y_true)[0])
-            title = 'Prédictions correctes'
-        else:
-            number = np.random.choice(np.where(y_pred != y_true)[0])
-            title = 'Prédictions incorrectes'
-        title += f'\nGradCAM sur la couche {last_conv_layer_name}'
-        plt.imshow(grad_cam(x_test[number], model, alpha, last_conv_layer_name))
-        plt.axis('off')
-        plt.title(f'True : {labels[y_true[number]]}\n Predicted : {labels[y_pred[number]]}')  #
-
-    plt.suptitle(title, fontsize=20)
-    plt.subplots_adjust(top=0.88)
-    plt.show()
+# def display_predictions(y_pred, y_true, x_test, model, labels, alpha=0.4,
+#                         last_conv_layer_name='block5_conv3', correct=True):
+#     title = ''
+#     plt.figure(figsize=(12, 12))
+#     for i in range(9):
+#         plt.subplot(3, 3, i + 1)
+#         if correct:
+#             number = np.random.choice(np.where(y_pred == y_true)[0])
+#             title = 'Prédictions correctes'
+#         else:
+#             number = np.random.choice(np.where(y_pred != y_true)[0])
+#             title = 'Prédictions incorrectes'
+#         title += f'\nGradCAM sur la couche {last_conv_layer_name}'
+#         plt.imshow(grad_cam(x_test[number], model, alpha, last_conv_layer_name))
+#         plt.axis('off')
+#         plt.title(f'True : {labels[y_true[number]]}\n Predicted : {labels[y_pred[number]]}')  #
+#
+#     plt.suptitle(title, fontsize=20)
+#     plt.subplots_adjust(top=0.88)
+#     plt.show()
 
 
 model_paths = {
-    "EfficientNetB1": "models/efficientNet_4classes_31unfrozen.h5",
-    "VGG16": "models/vgg16_4classes_4unfrozen.h5",
+    "EfficientNetB1": "models/model_enet_4_classes.h5",
+    "VGG16": "models/model_vgg_4_classes.h5",
 }
 
 
@@ -184,10 +182,10 @@ def run():
 
         # Preprocess the image based on the selected model
         if selected_model == "EfficientNetB1":
-            print('selected this model')
+            print('selected EfficientNetB1 model')
             img = preprocess_input_model1(img)
         elif selected_model == "VGG16":
-            print('selected that model')
+            print('selected VGG16 model')
             img = preprocess_input_model2(img)
 
         # Expand dimensions to match the model's input shape
@@ -203,10 +201,11 @@ def run():
 
         # Prediction on model
         preds = model.predict(img_with_channel)
-        # Choose a threshold for classification
-        threshold = 0.5
         # Predict the class using the threshold
-        predicted_classes = np.where(preds > threshold)[1]
+        predicted_classes = np.argmax(preds, axis=1)
+
+        print(preds)
+        print(predicted_classes)
 
         # COVID-19 = 0, LO = 1, SAIN = 2, VP =3
         class_names = ["COVID-19", "Lung Opacity", "Sain", "Viral Pneumonia"]
@@ -217,15 +216,21 @@ def run():
         for predicted_class in predicted_classes:
             c2.write(class_names[predicted_class])
 
-        # Get the indices of the classes with probabilities greater than the threshold
-        predicted_class_indices = np.where(preds > threshold)[1]
-
         # Get the corresponding probabilities
-        predicted_class_probs = preds[0][predicted_class_indices]
+        predicted_class_probs = preds[0][predicted_classes]
 
         c2.header('Output')
         c2.subheader('Predicted class indices:')
-        c2.write(predicted_class_indices)
+        c2.write(predicted_classes)
 
         c2.subheader('Predicted class probabilities:')
         c2.write(predicted_class_probs)
+
+        # GRADCAM
+        st.markdown('<h2 style="color:black;">Sélectionner une couche du modèle</h2>', unsafe_allow_html=True)
+
+        layers = [layer.name for layer in model.layers if (isinstance(layer, keras.layers.Conv2D) and 'conv' in layer.name)]
+        selected_layer = st.selectbox("Select layer", layers)
+        if st.button("Générer Grad-CAM"):
+            st.image(grad_cam(img, model, 0.5, selected_layer))
+
