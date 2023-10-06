@@ -26,17 +26,17 @@ def run():
     st.write(" ")
     st.markdown("<h3 style='text-align: center; color: black;'>Contexte </h3>", unsafe_allow_html=True, )
     st.write("L'arrivée de la pandémie de COVID-19 a marqué une période difficile pour les nations et leurs systèmes de"
-             "santé dans le monde entier. La propagation rapide de la maladie,"
+             " santé dans le monde entier. La propagation rapide de la maladie,"
              "avec une estimation de 44 % de la population mondiale infectée au moins une fois entre mars 2020 à la fin"
-             "de 2021, a submergé les services médicaux et les systèmes de santé. \n"
+             " de 2021, a submergé les services médicaux et les systèmes de santé. \n"
 
              "Le test PCR (réaction en chaîne de la polymérase) a été largement reconnu comme le 'gold standard' pour"
              " la détection du COVID-19. Cependant, lors des pics de la"
              " pandémie, la demande accrue de tests PCR a parfois entraîné des ruptures d'approvisionnement, limitant"
              "  ainsi la capacité de dépistage. Face à cette situation,"
-             "l'imagerie médicale a constitué une alternative pour le diagnostic. Les radiographies pulmonaires et les"
+             " l'imagerie médicale a constitué une alternative pour le diagnostic. Les radiographies pulmonaires et les"
              " tomodensitogrammes (CT-scans) sont devenus des outils essentiels"
-             "pour identifier les signes distinctifs de l'infection pulmonaire causée par le virus.")
+             " pour identifier les signes distinctifs de l'infection pulmonaire causée par le virus.")
 
     st.write(" ")
     st.markdown("<h3 style='text-align: center; color: black;'>Objectifs </h3>", unsafe_allow_html=True, )

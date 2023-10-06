@@ -21,8 +21,8 @@ def run():
                 unsafe_allow_html=True, )
 
     # Création des tabs pour chaque élément de la data viz
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Métadonnées", "Échantillon par Classe", "Moyennes par Classe",
-                                                  "Differences Entres Classes", "Eigenimages", "Pixel Distribution"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Métadonnées", "Échantillon par Classe", "Moyennes par Classe",
+                                            "Différences Entres Classes", "Distribution des Pixels"])
 
     # Chargement des images et descriptions pour tab 1
     with tab1:
@@ -68,7 +68,11 @@ def run():
     with tab3:
         st.markdown("<h4 style='text-align: center; color: black;'>Moyennes par Classe </h4>", unsafe_allow_html=True, )
         st.write(" ")
-        st.image(moyennes)
+
+        col1, col2, col3 = st.columns([1, 6, 1])
+        with col2:
+            st.image(moyennes)
+
         st.write("""
             L’image moyenne générée pour chaque classe nous a permis d’observer certaines
             caractéristiques propres à chaque classe. Nous avons pu ainsi remarquer que
@@ -91,17 +95,17 @@ def run():
             nous l’avons vu pour la moyenne des images, d’une obstruction au niveau des poumons.
             """)
 
-    # Chargement des images et descriptions pour tab 5
-    with tab5:
-        st.markdown("<h4 style='text-align: center; color: black;'>Eigenimages </h4>", unsafe_allow_html=True, )
-        st.write(" ")
-        st.image(eigen)
-        st.write("""
-            Nous avons généré des eigenimages pour chaque image de chaque classe.
-            """)
+    # # Chargement des images et descriptions pour tab 5
+    # with tab5:
+    #     st.markdown("<h4 style='text-align: center; color: black;'>Eigenimages </h4>", unsafe_allow_html=True, )
+    #     st.write(" ")
+    #     st.image(eigen)
+    #     st.write("""
+    #         Nous avons généré des eigenimages pour chaque image de chaque classe.
+    #         """)
 
     # Chargement des images et descriptions pour tab 6
-    with tab6:
+    with tab5:
         st.markdown("<h4 style='text-align: center; color: black;'>Distribution des Pixels </h4>",
                     unsafe_allow_html=True, )
         st.write(" ")

@@ -193,7 +193,7 @@ def run():
 
         c1.header('Input Image')
         c1.image(im)
-        c1.write(img.shape)
+        # c1.write(img.shape)
 
         # Load the selected model
         selected_model_path = model_paths[selected_model]
@@ -211,7 +211,7 @@ def run():
         class_names = ["COVID-19", "Lung Opacity", "Sain", "Viral Pneumonia"]
 
         c2.header('Output')
-        c2.subheader('Predicted classes :')
+        c2.subheader('Classe prédite :')
 
         for predicted_class in predicted_classes:
             c2.write(class_names[predicted_class])
@@ -219,12 +219,14 @@ def run():
         # Get the corresponding probabilities
         predicted_class_probs = preds[0][predicted_classes]
 
-        c2.header('Output')
-        c2.subheader('Predicted class indices:')
-        c2.write(predicted_classes)
+        # c2.header('Output')
+        # c2.subheader('Predicted class indice:')
+        # c2.write(predicted_classes[0])
 
-        c2.subheader('Predicted class probabilities:')
-        c2.write(predicted_class_probs)
+        c2.subheader('Probabilité de la classe prédite:')
+        # print(predicted_class_probs[0])
+        rounded_proba = round(predicted_class_probs[0], 3)
+        c2.write(rounded_proba)
 
         # GRADCAM
         st.markdown('<h2 style="color:black;">Sélectionner une couche du modèle</h2>', unsafe_allow_html=True)
@@ -232,5 +234,10 @@ def run():
         layers = [layer.name for layer in model.layers if (isinstance(layer, keras.layers.Conv2D) and 'conv' in layer.name)]
         selected_layer = st.selectbox("Select layer", layers)
         if st.button("Générer Grad-CAM"):
-            st.image(grad_cam(img, model, 0.5, selected_layer))
-
+            col1, col2, col3 = st.columns([4, 8, 3])
+            with col1:
+                st.write(' ')
+            with col2:
+                st.image(grad_cam(img, model, 0.5, selected_layer), width=299, caption=f"Grad-CAM sur la couche {selected_layer}")
+            with col3:
+                st.write(' ')

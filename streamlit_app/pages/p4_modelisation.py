@@ -23,6 +23,7 @@ courbe_enet = Image.open(r"images\2_enet_courbe.png")
 resume_sans = Image.open(r"images\2_classes.png")
 resume_masques = Image.open(r"images\2_classes_masques.png")
 
+
 def run():
     # Titre de la page
     st.markdown("<h2 style='text-align: center; color: black;'>Modélisation </h2>", unsafe_allow_html=True, )
@@ -37,8 +38,6 @@ def run():
     st.markdown("-   Nous avons d'abord testé les modèles sur deux classes (« sain » et « malade ») afin de "
                 "sélectionner les modèles les plus performants pour la classification des quatre classes.")
 
-
-
     # Création des tabs pour chaque modèle
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["LeNet5", "ResNet152", "Xception", "VGG16", "EfficientNetB1"])
 
@@ -48,15 +47,18 @@ def run():
         st.write(" ")
         st.image(lenet)
         st.write("L'architecture de LeNet-5 est structurée avec une alternance de couches convolutives et de couches"
-                 "de mise en commun, suivies de couches entièrement connectées. "
+                 " de mise en commun, suivies de couches entièrement connectées. "
                  "Il se compose généralement de deux couches convolutives avec activation ReLU, de deux couches de mise"
-                 "en commun maximale et de couches entièrement connectées."
+                 " en commun maximale et de couches entièrement connectées."
                  "Même si des modèles plus récents l'ont dépassés, la simplicité de LeNet-5 par rapport"
-                 "à d'autres modèles de classification, le rend efficace en termes de calcul.")
+                 " à d'autres modèles de classification, le rend efficace en termes de calcul.")
         st.write("---")
         st.markdown("<h5 style='text-align: center; color: black;'>Matrice de confusion : Sain vs Malade </h5>",
                     unsafe_allow_html=True, )
-        st.image(conf_lenet)
+        col1, col2, col3 = st.columns([1, 6, 1])
+        with col2:
+            st.image(conf_lenet)
+
         st.write(" ")
         st.markdown("<h5 style='text-align: center; color: black;'>Courbe d'entrainement : Sain vs Malade </h5>",
                     unsafe_allow_html=True, )
@@ -72,11 +74,14 @@ def run():
                  " un apprentissage très profond du réseau sans le problème du gradient de fuite."
                  "Sa profondeur exceptionnelle, qui lui permet de capturer des caractéristiques hiérarchiques "
                  "complexes dans les images, et son efficacité à atteindre une précision de pointe dans diverses tâches"
-                 "de classification d'images.")
+                 " de classification d'images.")
         st.write("---")
+
         st.markdown("<h5 style='text-align: center; color: black;'>Matrice de confusion : Sain vs Malade </h5>",
                     unsafe_allow_html=True, )
-        st.image(conf_resnet)
+        col1, col2, col3 = st.columns([1, 6, 1])
+        with col2:
+            st.image(conf_resnet)
         st.write(" ")
         st.markdown("<h5 style='text-align: center; color: black;'>Courbe d'entrainement : Sain vs Malade </h5>",
                     unsafe_allow_html=True, )
@@ -95,7 +100,9 @@ def run():
         st.write("---")
         st.markdown("<h5 style='text-align: center; color: black;'>Matrice de confusion : Sain vs Malade </h5>",
                     unsafe_allow_html=True, )
-        st.image(conf_xception)
+        col1, col2, col3 = st.columns([1, 6, 1])
+        with col2:
+            st.image(conf_xception)
         st.write(" ")
         st.markdown("<h5 style='text-align: center; color: black;'>Courbe d'entrainement : Sain vs Malade </h5>",
                     unsafe_allow_html=True, )
@@ -112,7 +119,9 @@ def run():
         st.write("---")
         st.markdown("<h5 style='text-align: center; color: black;'>Matrice de confusion : Sain vs Malade </h5>",
                     unsafe_allow_html=True, )
-        st.image(conf_vgg)
+        col1, col2, col3 = st.columns([1, 6, 1])
+        with col2:
+            st.image(conf_vgg)
         st.write(" ")
         st.markdown("<h5 style='text-align: center; color: black;'>Courbe d'entrainement : Sain vs Malade </h5>",
                     unsafe_allow_html=True, )
@@ -126,11 +135,13 @@ def run():
         st.write("""EfficientNetB1 fait partie de la famille EfficientNet d'architectures de réseaux neuronaux, 
         connues pour leur efficacité en termes de taille de modèle et d'exigences de calcul. EfficientNetB1 utilise 
         une mise à l'échelle composée pour équilibrer la profondeur, la largeur et la résolution afin d'obtenir un 
-        compromis solide entre la précision et l'efficacité de calcul.. """)
+        compromis solide entre la précision et l'efficacité de calcul. """)
         st.write("---")
         st.markdown("<h5 style='text-align: center; color: black;'>Matrice de confusion : Sain vs Malade </h5>",
                     unsafe_allow_html=True, )
-        st.image(conf_enet)
+        col1, col2, col3 = st.columns([1, 6, 1])
+        with col2:
+            st.image(conf_enet)
         st.write(" ")
         st.markdown("<h5 style='text-align: center; color: black;'>Courbe d'entrainement : Sain vs Malade </h5>",
                     unsafe_allow_html=True, )

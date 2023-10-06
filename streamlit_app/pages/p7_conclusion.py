@@ -21,7 +21,7 @@ def run():
             "-   **Notre modèle obtient de meilleures performances sur un support moins efficace dans la détection de "
             "la COVID-19, la radiographie, que celui de Yang et al. (2020) entraîné sur des CT-scans.**")
         st.markdown(
-            "-   les résultats obtenus sont prometteurs et suggèrent que l'application de techniques d'apprentissage "
+            "-   **les résultats obtenus sont prometteurs et suggèrent que l'application de techniques d'apprentissage "
             "en profondeur dans le domaine médical est non seulement viable mais aussi extrêmement bénéfique.**")
 
     with tab2:
