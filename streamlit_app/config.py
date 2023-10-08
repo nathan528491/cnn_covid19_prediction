@@ -16,12 +16,12 @@ TEAM_MEMBERS = [
         github_url="#",
     ),
     Member(
-        name="Matthieu Khairallah",
+        name="Juliette Greco",
         linkedin_url="#",
         github_url="#",
     ),
     Member(
-        name="Juliette Greco",
+        name="Matthieu Khairallah",
         linkedin_url="#",
         github_url="#",
     ),

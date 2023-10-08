@@ -95,15 +95,16 @@ def run():
 
     with col1:
         st.subheader("VGG16")
+        st.image(conf_vgg, use_column_width=True)
+        st.write("---")
+        st.image(courbe_vgg, caption="Courbe d'entrainement", use_column_width=True)
+
+    with col2:
+        st.subheader("EfficientNetB1")
         st.image(conf_enet, use_column_width=True)
         st.write(" ")
         st.image(courbe_enet, use_column_width=True)
 
-    with col2:
-        st.subheader("EfficientNetB1")
-        st.image(conf_vgg, use_column_width=True)
-        st.write("---")
-        st.image(courbe_vgg, caption="Courbe d'entrainement", use_column_width=True)
 
     # GradCAM
     st.write("---")
