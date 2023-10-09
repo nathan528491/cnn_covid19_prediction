@@ -1,8 +1,10 @@
 pandas~=2.1.1
-matplotlib==3.4.2
+matplotlib~=3.8.0
 
 streamlit~=1.27.2
 pillow~=10.0.1
 numpy~=1.26.0
 opencv-python~=4.8.1.78
 keras~=2.14.0
+plotly~=5.9.0
+tensorflow~=2.14.0
