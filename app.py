@@ -38,7 +38,7 @@ def run():
         "streamlit_app/assets/logo-datascientest.png",
         width=200,
     )
-    tab_name = st.sidebar.radio("", list(TABS.keys()), 0)
+    tab_name = st.sidebar.radio('  ', list(TABS.keys()), 0)
     st.sidebar.markdown("---")
     st.sidebar.markdown(f"## {config.PROMOTION}")
 

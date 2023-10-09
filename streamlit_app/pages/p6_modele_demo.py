@@ -11,6 +11,8 @@ from PIL import Image
 from keras.models import load_model
 from keras.applications.efficientnet import preprocess_input
 
+from streamlit_app.config import st_markdown
+
 sidebar_name = "💻 Démo du modèle"
 
 labels_4_classes = ['Covid', 'Lung Opacity', 'Normal', 'Viral Pneumonia']
@@ -95,29 +97,6 @@ def grad_cam(img, model, alpha, last_conv_layer_name):
     return return_gradcam(img, heatmap, alpha)
 
 
-# Afficher les images avec les prédictions correctes ou incorrectes ainsi que la heatmap de GradCAM
-# def display_predictions(y_pred, y_true, x_test, model, labels, alpha=0.4,
-#                         last_conv_layer_name='block5_conv3', correct=True):
-#     title = ''
-#     plt.figure(figsize=(12, 12))
-#     for i in range(9):
-#         plt.subplot(3, 3, i + 1)
-#         if correct:
-#             number = np.random.choice(np.where(y_pred == y_true)[0])
-#             title = 'Prédictions correctes'
-#         else:
-#             number = np.random.choice(np.where(y_pred != y_true)[0])
-#             title = 'Prédictions incorrectes'
-#         title += f'\nGradCAM sur la couche {last_conv_layer_name}'
-#         plt.imshow(grad_cam(x_test[number], model, alpha, last_conv_layer_name))
-#         plt.axis('off')
-#         plt.title(f'True : {labels[y_true[number]]}\n Predicted : {labels[y_pred[number]]}')  #
-#
-#     plt.suptitle(title, fontsize=20)
-#     plt.subplots_adjust(top=0.88)
-#     plt.show()
-
-
 model_paths = {
     "EfficientNetB1": "models/model_enet_4_classes.h5",
     "VGG16": "models/model_vgg_4_classes.h5",
@@ -128,7 +107,7 @@ def run():
     #  GÉNÉRATEUR D'IMAGES
 
     # Chemin pour les images
-    image_folder = r"radios"
+    image_folder = r"streamlit_app\assets\radios"
 
     image_files = [f for f in os.listdir(image_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
 
@@ -137,7 +116,7 @@ def run():
 
     # Afficher les images à l'écran
     st.write(" ")
-    st.markdown('<h2 style="color:black;">Essayons nos modèles !</h2>', unsafe_allow_html=True)
+    st_markdown('Essayons nos modèles !', 'h2')
 
     # Créer une rangée pour afficher les images et les noms
     row = st.columns(3)
@@ -166,8 +145,7 @@ def run():
         image_elements[i] = row[i].image(image_path, caption=image_file, use_column_width=True)
 
     # APPLICATION DU MODÈLE
-
-    st.markdown('<h2 style="color:black;">Sélectionner un modèle</h2>', unsafe_allow_html=True)
+    st_markdown('Sélectionner un modèle', 'h2')
     selected_model = st.selectbox("Select Model", list(model_paths.keys()))
 
     upload = upload_image()
@@ -229,15 +207,18 @@ def run():
         c2.write(rounded_proba)
 
         # GRADCAM
-        st.markdown('<h2 style="color:black;">Sélectionner une couche du modèle</h2>', unsafe_allow_html=True)
+        st_markdown('Sélectionner une couche du modèle', 'h2')
 
-        layers = [layer.name for layer in model.layers if (isinstance(layer, keras.layers.Conv2D) and 'conv' in layer.name)]
+        layers = [layer.name for layer in model.layers if (isinstance(layer, keras.layers.Conv2D)
+                                                           and 'conv' in layer.name)]
         selected_layer = st.selectbox("Select layer", layers)
         if st.button("Générer Grad-CAM"):
             col1, col2, col3 = st.columns([4, 8, 3])
             with col1:
                 st.write(' ')
             with col2:
-                st.image(grad_cam(img, model, 0.5, selected_layer), width=299, caption=f"Grad-CAM sur la couche {selected_layer}")
+                st.image(grad_cam(img, model, 0.5, selected_layer),
+                         width=299,
+                         caption=f"Grad-CAM sur la couche {selected_layer}")
             with col3:
                 st.write(' ')

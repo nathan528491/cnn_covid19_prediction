@@ -9,7 +9,7 @@ import plotly.express as px
 
 sidebar_name = "Testing"
 
-full_df = pd.read_csv('metadata.csv')
+full_df = pd.read_csv('data/metadata.csv')
 full_df['target'] = full_df['FILE NAME'].apply(lambda x: x[:1])
 full_df['target'] = full_df['target'].replace(
     {'C': 'COVID-19', 'N': 'Normal', 'V': 'Viral Pneumonia', 'L': 'Lung Opacity'})
@@ -78,7 +78,6 @@ def plots_2():
     # make the y label on 2 lines
     # fig.update_yaxes(tickfont=dict(size=8))
     # print([f"{df_groupby.sort_values(by='sum').index.values[i][8:18]} ..." for i in range(len(df_groupby))])
-    # change xlabel to number of images
 
     fig.update_layout(
         yaxis={
@@ -93,23 +92,23 @@ def plots_2():
     st.plotly_chart(fig, theme="streamlit")
 
 
-hi = pd.DataFrame([[233, 9, 8, 0],
-                   [4, 231, 25, 1],
-                   [6, 17, 205, 12],
-                   [2, 0, 0, 247]])
-#trnasform to percentage
-hi = hi.apply(lambda x: (x * 100 / x.sum()), axis=1)
-print(hi.head())
+conf_test = pd.DataFrame([[233, 9, 8, 0],
+                          [4, 231, 25, 1],
+                          [6, 17, 205, 12],
+                          [2, 0, 0, 247]])
+
+conf_test = conf_test.apply(lambda x: (x * 100 / x.sum()), axis=1)
+
 
 def plots_3():
     # make a classification matrix
-    fig = px.imshow(hi,
+    fig = px.imshow(conf_test,
                     labels=dict(x="Predicted", y="True"),
                     color_continuous_scale='Blues',
                     x=['COVID-19', 'Lung Opacity', 'Normal', 'Viral Pneumonia'],
                     y=['COVID-19', 'Lung Opacity', 'Normal', 'Viral Pneumonia'],
                     # add '%' to each cell
-                    text_auto='.2f' )
+                    text_auto='.2f')
 
     fig.update_xaxes(side="bottom")
     st.plotly_chart(fig, theme="streamlit")
@@ -117,6 +116,5 @@ def plots_3():
 
 def run():
     plots_1()
-
     plots_2()
     plots_3()

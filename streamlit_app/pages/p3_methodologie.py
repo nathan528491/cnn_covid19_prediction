@@ -1,65 +1,38 @@
 # Importation des bibliothèques
 import streamlit as st
 from PIL import Image
+from streamlit_app.texts import methodologie
+from streamlit_app.config import st_markdown
 
 sidebar_name = "🧪 Méthodologie et Préprocessing"
 
 # Creation des variables pour les images qu'on va charger plus tard
-masque = Image.open(r"images\radio_masquee.png")
-masque2 = Image.open(r"images\masque.png")
-flip = Image.open(r"images\pic_turn.png")
+masque = Image.open(r"streamlit_app\assets\images\radio_masquee.png")
+masque2 = Image.open(r"streamlit_app\assets\images\masque.png")
+flip = Image.open(r"streamlit_app\assets\images\pic_turn.png")
+
+
+# Fonction pour créer sous-titres
+def subheading_with_bullet_points(subheading, points):
+    st.markdown(f"<strong>{subheading}<strong>", unsafe_allow_html=True)
+    st.markdown(points, unsafe_allow_html=True)
 
 
 def run():
-    # L'en-tête de la page
-
-    st.markdown("<h2 style='text-align: center; color: black;'>Méthodologie et Préprocessing </h2>",
-                unsafe_allow_html=True, )
+    # Titre de la page
+    st_markdown('Méthodologie et Préprocessing', 'h2')
     st.write("---")
 
     tab1, tab2 = st.tabs(["Méthodologie", "Préprocessing"])
 
     with tab1:
-
-        st.markdown("<h4 style='text-align: center; color: black;'>Méthodologie </h4>", unsafe_allow_html=True, )
+        st_markdown('Méthodologie', 'h4')
         st.write(" ")
 
-        # Fonction pour créer sous-titres
-        def subheading_with_bullet_points(subheading, points):
-            st.markdown(f"<strong>{subheading}<strong>", unsafe_allow_html=True)
-            st.markdown(points, unsafe_allow_html=True)
-
-        # Étape 1
-        etape1_points = """
-        -   Établir des résultats de référence à l'aide d'un simple réseau neuronal convolutif (LeNet5) 
-        sur deux classes de sortie (« sain » et « malade »).
-        -   Catégories « COVID », « Lung Opacity » et « Viral Pneumonia » groupées comme « malade ».
-        -   5000 images par classe.
-        -   Essais sur des images masquées et non masquées.
-        """
-        subheading_with_bullet_points("Étape 1", etape1_points)
-
-        # Étape 2
-        etape2_points = """
-        -   Appliquer les techniques d'apprentissage par transfert (transfer learning) pour essayer plusieurs autres 
-        modèles CNN dont la viabilité a été prouvée en matière de classification d'images, 
-        avec des niveaux de complexité et des besoins de calcul variables.
-        -   Modèles choisis : ResNet152, Xception, VGG16, EfficientNetB1.
-        -   Études sur 2 classes et les 4 classes originales.
-        -   Essais sur des images masquées et non masquées.
-        -   Essais sur des jeux de données avec data augmentation.
-        """
-        subheading_with_bullet_points("Étape 2", etape2_points)
-
-        # Étape 3
-        etape3_points = """
-        -   Choisir le meilleur modèle en termes de performance sur le jeu de données (accuracy) et 
-        le régler afin d'en améliorer les performances.
-        -   Essais de congélation et de décongélation (freezing and unfreezing) des couches du modèle.
-        -   Appliquer une GradCam afin d'interpréter notre modèle et de comprendre comment il définit ses 
-        classifications.
-        """
-        subheading_with_bullet_points("Étape 3", etape3_points)
+        # Étapes
+        for i, etape in enumerate(methodologie.etapes):
+            subheading_with_bullet_points(f"Étape {i + 1}", etape)
+            st.write(" ")
 
         # Réduire l'espace entre points
         st.markdown('''
@@ -72,12 +45,10 @@ def run():
             ''', unsafe_allow_html=True)
 
     with tab2:
-
-        st.markdown("<h4 style='text-align: center; color: black;'>Préprocessing </h4>", unsafe_allow_html=True, )
+        st_markdown('Préprocessing', 'h4')
         st.write(" ")
 
         # Créer un dictionnaire pour mapper des options correspondant aux images and textes
-
         options_data = {
             "Adaptation de la taille des images": {
                 "image": masque,
@@ -95,16 +66,15 @@ def run():
                 "text": "Nous avons procédé à une data augmentation dans l’étude des quatre classes afin de pouvoir "
                         "entrainer notre modèle sur un plus grand jeu de données.",
                 "code": """
-            train_datagen = ImageDataGenerator(
-                rotation_range = 0.15,
-                width_shift_range = 0.2,
-                height_shift_range = 0.2,
-                shear_range = 0.2,
-                zoom_range = 0.2,
-                fill_mode = 'nearest')
-                    """
+                    train_datagen = ImageDataGenerator(
+                        rotation_range = 0.15,
+                        width_shift_range = 0.2,
+                        height_shift_range = 0.2,
+                        shear_range = 0.2,
+                        zoom_range = 0.2,
+                        fill_mode = 'nearest')
+                        """
             },
-
         }
 
         # Créer ub menu déroulant pour les étapes de preprocessing
