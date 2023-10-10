@@ -99,7 +99,9 @@ def grad_cam(img, model, alpha, last_conv_layer_name):
 
 model_paths = {
     "EfficientNetB1": "models/model_enet_4_classes.h5",
+    "EfficientNetB1 Masques": "models/model_enet_4_classes_mask.h5",
     "VGG16": "models/model_vgg_4_classes.h5",
+    "VGG16 Masques": "models/model_vgg_4_classes_mask.h5",
 }
 
 
@@ -159,13 +161,13 @@ def run():
         img = np.asarray(im)
 
         # Preprocess the image based on the selected model
-        if selected_model == "EfficientNetB1":
-            print('selected EfficientNetB1 model')
+        if selected_model == "EfficientNetB1" or selected_model == "EfficientNetB1 Masques":
             img = preprocess_input_model1(img)
-        elif selected_model == "VGG16":
-            print('selected VGG16 model')
+
+        elif selected_model == "VGG16" or selected_model == "VGG16 Masques":
             img = preprocess_input_model2(img)
 
+        print(f'selected {selected_model} model')
         # Expand dimensions to match the model's input shape
         img_with_channel = np.expand_dims(img, axis=0)  # Define img_with_channel here
 

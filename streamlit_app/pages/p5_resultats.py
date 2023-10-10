@@ -15,6 +15,15 @@ courbe_vgg = Image.open(r"streamlit_app\assets\images\4_vgg_courbe.png")
 correct = Image.open(r"streamlit_app\assets\images\gradcam_correct.png")
 incorrect = Image.open(r"streamlit_app\assets\images\gradcam_incorrect.png")
 
+gradcam_enet_correct = Image.open(r"streamlit_app/assets/images/gc_4_eff_co.png")
+gradcam_enet_correct_mask = Image.open(r"streamlit_app/assets/images/gc_4_eff_co_mask.png")
+gradcam_enet_incorrect = Image.open(r"streamlit_app/assets/images/gc_4_eff_inco.png")
+gradcam_enet_incorrect_mask = Image.open(r"streamlit_app/assets/images/gc_4_eff_inco_mask.png")
+gradcam_vgg_correct = Image.open(r"streamlit_app/assets/images/gc_4_vgg_co.png")
+gradcam_vgg_correct_mask = Image.open(r"streamlit_app/assets/images/gc_4_vgg_co_mask.png")
+gradcam_vgg_incorrect = Image.open(r"streamlit_app/assets/images/gc_4_vgg_inco.png")
+gradcam_vgg_incorrect_mask = Image.open(r"streamlit_app/assets/images/gc_4_vgg_inco_mask.png")
+
 
 def run():
     st_markdown('Résultats', 'h2')
@@ -82,12 +91,34 @@ def run():
 
     # GradCAM
     st.write("---")
+    st_markdown("GradCAM", 'h4')
+    st.write("  ")
 
-    st_markdown("Résultats du GradCAM sur EfficientNetB1, 4 classes sans masques", 'h4')
-    st.write("  ")
-    st.write("GradCAM de prédictions correctes")
-    st.image(correct)
-    st.write("  ")
-    st.write("  ")
-    st.write("GradCAM de prédictions incorrectes")
-    st.image(incorrect)
+    tab1, tab2 = st.tabs(["EfficientNetB1", "VGG16"])
+
+    with tab1:
+        tab3, tab4 = st.tabs(["Sans masques", "Masques"])
+        with tab3:
+            st.image(gradcam_enet_correct)
+            st.image(gradcam_enet_incorrect)
+
+        with tab4:
+            st.image(gradcam_enet_correct_mask)
+            st.image(gradcam_enet_incorrect_mask)
+
+    with tab2:
+        tab5, tab6 = st.tabs(["Sans masques", "Masques"])
+        with tab5:
+            st.image(gradcam_vgg_correct)
+            st.image(gradcam_vgg_incorrect)
+
+        with tab6:
+            st.image(gradcam_vgg_correct_mask)
+            st.image(gradcam_vgg_incorrect_mask)
+
+    # st.write("GradCAM de prédictions correctes")
+    # st.image(correct)
+    # st.write("  ")
+    # st.write("  ")
+    # st.write("GradCAM de prédictions incorrectes")
+    # st.image(incorrect)

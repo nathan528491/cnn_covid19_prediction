@@ -30,7 +30,7 @@ de classification d'images.
 
 text_xception = """
 Xception utilise des convolutions séparables dans le sens de la profondeur. Il est structuré avec 
-plusieurs blocs de convolutions séparables dans le sens de la profondeur, suivis par des connexions 
+plusieurs blocs de convolutions, suivis par des connexions 
 de saut et une mise en commun de la moyenne globale. Xception est connu 
 pour ses performances élevées en termes de précision et d'efficacité de calcul, grâce à ses 
 convolutions séparables dans le sens de la profondeur.
