@@ -157,7 +157,7 @@ def run():
 
     # APPLICATION DU MODÈLE
     st_markdown('Sélectionner un modèle', 'h2')
-    selected_model = st.selectbox("Select Model", list(model_paths.keys()))
+    selected_model = st.selectbox("Select Model", list(model_paths.keys()), index = 0, disabled = True)
 
     upload = upload_image()
     c1, c2 = st.columns(2)
