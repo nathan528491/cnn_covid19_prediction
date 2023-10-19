@@ -36,13 +36,9 @@ TABS = OrderedDict(
 
 
 def run():
-    st.sidebar.image(
-        "streamlit_app/assets/logo-datascientest.png",
-        width=200,
-    )
+    st.sidebar.markdown("# **CoviNet**")
     tab_name = st.sidebar.radio('  ', list(TABS.keys()), 0)
     st.sidebar.markdown("---")
-    st.sidebar.markdown(f"## {config.PROMOTION}")
 
     st.sidebar.markdown("### Team members:")
     for member in config.TEAM_MEMBERS:

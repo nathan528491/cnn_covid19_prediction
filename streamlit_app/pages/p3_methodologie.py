@@ -3,13 +3,16 @@ import streamlit as st
 from PIL import Image
 from streamlit_app.texts import methodologie
 from streamlit_app.config import st_markdown
+import path
+
+directory = path.Path(__file__).parent.parent.parent
 
 sidebar_name = "🧪 Méthodologie et Préprocessing"
 
 # Creation des variables pour les images qu'on va charger plus tard
-masque = Image.open(r"streamlit_app\assets\images\radio_masquee.png")
-masque2 = Image.open(r"streamlit_app\assets\images\masque.png")
-flip = Image.open(r"streamlit_app\assets\images\pic_turn.png")
+masque = Image.open(directory + "/streamlit_app/assets/images/radio_masquee.png")
+masque2 = Image.open(directory + "/streamlit_app/assets/images/masque.png")
+flip = Image.open(directory + "/streamlit_app/assets/images/pic_turn.png")
 
 
 # Fonction pour créer sous-titres
