@@ -23,9 +23,6 @@ labels_2_classes = ['Malade', 'Sain']
 
 
 def preprocess_input_model1(img):
-    # img = tf.io.decode_png(img, channels=3)
-    # img_resized = tf.image.resize(img, [240, 240])
-
     img = cv2.resize(img, (240, 240))
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img_resized = cv2.resize(img_rgb, (240, 240))
@@ -34,9 +31,6 @@ def preprocess_input_model1(img):
 
 
 def preprocess_input_model2(img):
-    # img = tf.io.decode_png(img, channels=3)
-    # img_resized = tf.image.resize(img, [224, 224])
-
     img = cv2.resize(img, (224, 224))
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img_resized = cv2.resize(img_rgb, (224, 224))
@@ -118,7 +112,7 @@ def run():
     #  GÉNÉRATEUR D'IMAGES
 
     # Chemin pour les images
-    image_folder = directory + r"\streamlit_app\assets\radios"
+    image_folder = directory + "/streamlit_app/assets/radios"
 
     image_files = [f for f in os.listdir(image_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
 
