@@ -4,7 +4,7 @@ import streamlit_app.config as config
 
 from streamlit_app.pages import (p1_intro, p2_dataviz, p3_methodologie, p4_modelisation, p5_resultats, p6_modele_demo,
                                  p7_conclusion,
-                                 p8_tests
+                                 # p8_tests
                                  )
 
 st.set_page_config(
@@ -29,20 +29,16 @@ TABS = OrderedDict(
         (p5_resultats.sidebar_name, p5_resultats),
         (p6_modele_demo.sidebar_name, p6_modele_demo),
         (p7_conclusion.sidebar_name, p7_conclusion),
-        (p8_tests.sidebar_name, p8_tests),
+        # (p8_tests.sidebar_name, p8_tests),
 
     ]
 )
 
 
 def run():
-    st.sidebar.image(
-        "streamlit_app/assets/logo-datascientest.png",
-        width=200,
-    )
+    st.sidebar.markdown("# **CoviNet**")
     tab_name = st.sidebar.radio('  ', list(TABS.keys()), 0)
     st.sidebar.markdown("---")
-    st.sidebar.markdown(f"## {config.PROMOTION}")
 
     st.sidebar.markdown("### Team members:")
     for member in config.TEAM_MEMBERS:

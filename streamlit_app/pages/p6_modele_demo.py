@@ -118,7 +118,7 @@ def run():
     #  GÉNÉRATEUR D'IMAGES
 
     # Chemin pour les images
-    image_folder = directory + "/streamlit_app/assets/radios"
+    image_folder = directory + r"\streamlit_app\assets\radios"
 
     image_files = [f for f in os.listdir(image_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
 
@@ -130,7 +130,7 @@ def run():
     st_markdown('Essayons nos modèles !', 'h2')
 
     # Créer une rangée pour afficher les images et les noms
-    row = st.columns(3)
+    col = st.columns(3)
 
     # Sélectionner initialement trois images aléatoires distinctes
     random_images = random.sample(image_files, 3)
@@ -139,12 +139,14 @@ def run():
     image_elements = []
     for i, image_file in enumerate(random_images):
         image_path = os.path.join(image_folder, image_file)
-        image_elements.append(row[i].image(image_path, caption=image_file, use_column_width=True))
+        image_elements.append(col[i].image(image_path, caption=image_file, use_column_width=True))
+        print(image_path)
 
     # Ajouter un bouton pour générer d'autres images
     if st.button("Générer d'autres images"):
         # Sélectionner à nouveau trois images aléatoires distinctes
         random_images = random.sample(image_files, 3)
+        print(random_images)
 
     # Effacer d'abord les images existantes en réaffectant des valeurs vides
     for i in range(3):
@@ -153,7 +155,8 @@ def run():
     # Afficher les nouvelles images avec leurs noms
     for i, image_file in enumerate(random_images):
         image_path = os.path.join(image_folder, image_file)
-        image_elements[i] = row[i].image(image_path, caption=image_file, use_column_width=True)
+        print(image_path)
+        image_elements[i] = col[i].image(image_path, caption=image_file, use_column_width=True)
 
     # APPLICATION DU MODÈLE
     st_markdown('Sélectionner un modèle', 'h2')
@@ -162,10 +165,7 @@ def run():
     upload = upload_image()
     c1, c2 = st.columns(2)
 
-    print('selected model : ', selected_model)
-
     if upload is not None:
-        print('uploaded image')
         im = Image.open(upload)
         img = np.asarray(im)
 
@@ -176,13 +176,11 @@ def run():
         elif selected_model == "VGG16" or selected_model == "VGG16 Masques":
             img = preprocess_input_model2(img)
 
-        print(f'selected {selected_model} model')
         # Expand dimensions to match the model's input shape
         img_with_channel = np.expand_dims(img, axis=0)  # Define img_with_channel here
 
         c1.header('Input Image')
         c1.image(im)
-        # c1.write(img.shape)
 
         # Load the selected model
         selected_model_path = model_paths[selected_model]
@@ -208,12 +206,7 @@ def run():
         # Get the corresponding probabilities
         predicted_class_probs = preds[0][predicted_classes]
 
-        # c2.header('Output')
-        # c2.subheader('Predicted class indice:')
-        # c2.write(predicted_classes[0])
-
         c2.subheader('Probabilité de la classe prédite:')
-        # print(predicted_class_probs[0])
         rounded_proba = round(predicted_class_probs[0], 3)
         c2.write(rounded_proba)
 
