@@ -6,7 +6,7 @@ import path
 import sys
 
 dir = path.Path(__file__).parent.parent.parent
-sys.append.path(dir)
+sys.path.append(dir)
 
 sidebar_name = "🏠 Introduction"
 
