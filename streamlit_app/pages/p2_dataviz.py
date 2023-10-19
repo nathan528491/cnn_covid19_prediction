@@ -12,7 +12,7 @@ sys.path.append(dir)
 sidebar_name = "📊 DataViz"
 
 # Creation des variables pour les images qu'on va charger plus tard
-class_bar = Image.open(r"streamlit_app\assets\images\classes2.png")
+class_bar = Image.open(dir + "/streamlit_app/assets/images/classes2.png")
 provenance = Image.open(r"streamlit_app\assets\images\provenance.png")
 radios_classe = Image.open(r"streamlit_app\assets\images\images_classes.png")
 moyennes = Image.open(r"streamlit_app\assets\images\moyenne_type.png")
