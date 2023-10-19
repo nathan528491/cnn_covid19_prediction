@@ -2,10 +2,8 @@ import streamlit as st
 from streamlit_app.texts import conclusion
 from streamlit_app.config import st_markdown
 import path
-import sys
 
-dir = path.Path(__file__).parent.parent.parent
-sys.path.append(dir)
+directory = path.Path(__file__).parent.parent.parent
 
 sidebar_name = "📑 Conclusion"
 

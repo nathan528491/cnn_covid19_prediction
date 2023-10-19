@@ -7,10 +7,8 @@ import plotly.express as px
 # from plotly.subplots import make_subplots
 # import plotly.graph_objects as go
 import path
-import sys
 
-dir = path.Path(__file__).parent.parent.parent
-sys.path.append(dir)
+directory = path.Path(__file__).parent.parent.parent
 
 sidebar_name = "Testing"
 

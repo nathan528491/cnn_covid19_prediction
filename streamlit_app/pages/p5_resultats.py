@@ -3,31 +3,29 @@ from PIL import Image
 from streamlit_app.texts import resultats
 from streamlit_app.config import st_markdown
 import path
-import sys
 
-dir = path.Path(__file__).parent.parent.parent
-sys.path.append(dir)
+directory = path.Path(__file__).parent.parent.parent
 
 sidebar_name = "🎯 Résultats"
 
 # Creation des variables pour les images qu'on va charger plus tard
-resume_sans = Image.open(r"streamlit_app\assets\images\4_classes.png")
-resume_masques = Image.open(r"streamlit_app\assets\images\4_classes_masques.png")
-conf_enet = Image.open(r"streamlit_app\assets\images\4_enet_conf.png")
-courbe_enet = Image.open(r"streamlit_app\assets\images\4_enet_courbe.png")
-conf_vgg = Image.open(r"streamlit_app\assets\images\4_vgg_conf.png")
-courbe_vgg = Image.open(r"streamlit_app\assets\images\4_vgg_courbe.png")
-correct = Image.open(r"streamlit_app\assets\images\gradcam_correct.png")
-incorrect = Image.open(r"streamlit_app\assets\images\gradcam_incorrect.png")
+resume_sans = Image.open(directory + "streamlit_app/assets/images/4_classes.png")
+resume_masques = Image.open(directory + "streamlit_app/assets/images/4_classes_masques.png")
+conf_enet = Image.open(directory + "streamlit_app/assets/images/4_enet_conf.png")
+courbe_enet = Image.open(directory + "streamlit_app/assets/images/4_enet_courbe.png")
+conf_vgg = Image.open(directory + "streamlit_app/assets/images/4_vgg_conf.png")
+courbe_vgg = Image.open(directory + "streamlit_app/assets/images/4_vgg_courbe.png")
+correct = Image.open(directory + "streamlit_app/assets/images/gradcam_correct.png")
+incorrect = Image.open(directory + "streamlit_app/assets/images/gradcam_incorrect.png")
 
-gradcam_enet_correct = Image.open(r"streamlit_app/assets/images/gc_4_eff_co.png")
-gradcam_enet_correct_mask = Image.open(r"streamlit_app/assets/images/gc_4_eff_co_mask.png")
-gradcam_enet_incorrect = Image.open(r"streamlit_app/assets/images/gc_4_eff_inco.png")
-gradcam_enet_incorrect_mask = Image.open(r"streamlit_app/assets/images/gc_4_eff_inco_mask.png")
-gradcam_vgg_correct = Image.open(r"streamlit_app/assets/images/gc_4_vgg_co.png")
-gradcam_vgg_correct_mask = Image.open(r"streamlit_app/assets/images/gc_4_vgg_co_mask.png")
-gradcam_vgg_incorrect = Image.open(r"streamlit_app/assets/images/gc_4_vgg_inco.png")
-gradcam_vgg_incorrect_mask = Image.open(r"streamlit_app/assets/images/gc_4_vgg_inco_mask.png")
+gradcam_enet_correct = Image.open(directory + "streamlit_app/assets/images/gc_4_eff_co.png")
+gradcam_enet_correct_mask = Image.open(directory + "streamlit_app/assets/images/gc_4_eff_co_mask.png")
+gradcam_enet_incorrect = Image.open(directory + "streamlit_app/assets/images/gc_4_eff_inco.png")
+gradcam_enet_incorrect_mask = Image.open(directory + "streamlit_app/assets/images/gc_4_eff_inco_mask.png")
+gradcam_vgg_correct = Image.open(directory + "streamlit_app/assets/images/gc_4_vgg_co.png")
+gradcam_vgg_correct_mask = Image.open(directory + "streamlit_app/assets/images/gc_4_vgg_co_mask.png")
+gradcam_vgg_incorrect = Image.open(directory + "streamlit_app/assets/images/gc_4_vgg_inco.png")
+gradcam_vgg_incorrect_mask = Image.open(directory + "streamlit_app/assets/images/gc_4_vgg_inco_mask.png")
 
 
 def run():

@@ -6,20 +6,20 @@ from streamlit_app.config import st_markdown
 import path
 # import sys
 
-dir = path.Path(__file__).parent.parent.parent
+directory = path.Path(__file__).parent.parent.parent
 # sys.path.append(dir)
 
 sidebar_name = "📊 DataViz"
 
 # Creation des variables pour les images qu'on va charger plus tard
-class_bar = Image.open(dir + "/streamlit_app/assets/images/classes2.png")
-provenance = Image.open(dir + "/streamlit_app/assets/images/provenance.png")
-radios_classe = Image.open(dir + "/streamlit_app/assets/images/images_classes.png")
-moyennes = Image.open(dir + "/streamlit_app/assets/images/moyenne_type.png")
-diff = Image.open(dir + "/streamlit_app/assets/images/diff.png")
-eigen = Image.open(dir + "/streamlit_app/assets/images/eigen.png")
-img_pix = Image.open(dir + "/streamlit_app/assets/images/pix_dist_norm.png")
-pix_dist = Image.open(dir + "/streamlit_app/assets/images/source_pix_dist.png")
+class_bar = Image.open(directory + "/streamlit_app/assets/images/classes2.png")
+provenance = Image.open(directory + "/streamlit_app/assets/images/provenance.png")
+radios_classe = Image.open(directory + "/streamlit_app/assets/images/images_classes.png")
+moyennes = Image.open(directory + "/streamlit_app/assets/images/moyenne_type.png")
+diff = Image.open(directory + "/streamlit_app/assets/images/diff.png")
+eigen = Image.open(directory + "/streamlit_app/assets/images/eigen.png")
+img_pix = Image.open(directory + "/streamlit_app/assets/images/pix_dist_norm.png")
+pix_dist = Image.open(directory + "/streamlit_app/assets/images/source_pix_dist.png")
 
 
 def run():

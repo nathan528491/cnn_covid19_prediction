@@ -13,10 +13,8 @@ from keras.applications.efficientnet import preprocess_input
 
 from streamlit_app.config import st_markdown
 import path
-import sys
 
-dir = path.Path(__file__).parent.parent.parent
-sys.path.append(dir)
+directory = path.Path(__file__).parent.parent.parent
 
 sidebar_name = "💻 Démo du modèle"
 
@@ -103,10 +101,10 @@ def grad_cam(img, model, alpha, last_conv_layer_name):
 
 
 model_paths = {
-    "EfficientNetB1": "models/model_enet_4_classes.h5",
-    "EfficientNetB1 Masques": "models/model_enet_4_classes_mask.h5",
-    "VGG16": "models/model_vgg_4_classes.h5",
-    "VGG16 Masques": "models/model_vgg_4_classes_mask.h5",
+    "EfficientNetB1": directory + "/models/model_enet_4_classes.h5",
+    "EfficientNetB1 Masques":  directory + "/models/model_enet_4_classes_mask.h5",
+    "VGG16":  directory + "/models/model_vgg_4_classes.h5",
+    "VGG16 Masques":  directory + "/models/model_vgg_4_classes_mask.h5",
 }
 
 
