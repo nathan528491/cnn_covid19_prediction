@@ -5,7 +5,7 @@ import numpy as np
 import streamlit as st
 import os
 import random
-import cv2
+# import cv2
 from PIL import Image
 
 from keras.models import load_model
@@ -23,17 +23,23 @@ labels_2_classes = ['Malade', 'Sain']
 
 
 def preprocess_input_model1(img):
-    img = cv2.resize(img, (240, 240))
-    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    img_resized = cv2.resize(img_rgb, (240, 240))
+    img = tf.io.decode_png(img, channels=3)
+    img_resized = tf.image.resize(img, [240, 240])
+
+    # img = cv2.resize(img, (240, 240))
+    # img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    # img_resized = cv2.resize(img_rgb, (240, 240))
     img = preprocess_input(img_resized)
     return img
 
 
 def preprocess_input_model2(img):
-    img = cv2.resize(img, (224, 224))
-    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    img_resized = cv2.resize(img_rgb, (224, 224))
+    img = tf.io.decode_png(img, channels=3)
+    img_resized = tf.image.resize(img, [224, 224])
+
+    # img = cv2.resize(img, (224, 224))
+    # img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    # img_resized = cv2.resize(img_rgb, (224, 224))
     img = preprocess_input(img_resized)
     return img
 
