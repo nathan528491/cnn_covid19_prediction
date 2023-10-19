@@ -12,7 +12,7 @@ directory = path.Path(__file__).parent.parent.parent
 
 sidebar_name = "Testing"
 
-full_df = pd.read_csv('data/metadata.csv')
+full_df = pd.read_csv(directory + '/data/metadata.csv')
 full_df['target'] = full_df['FILE NAME'].apply(lambda x: x[:1])
 full_df['target'] = full_df['target'].replace(
     {'C': 'COVID-19', 'N': 'Normal', 'V': 'Viral Pneumonia', 'L': 'Lung Opacity'})
