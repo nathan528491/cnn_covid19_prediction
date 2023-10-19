@@ -7,3 +7,4 @@ opencv-python~=4.8.1.78
 keras~=2.14.0
 plotly~=5.9.0
 tensorflow~=2.14.0
+path~=16.7.1
