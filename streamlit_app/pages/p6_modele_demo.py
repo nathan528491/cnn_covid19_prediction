@@ -118,7 +118,7 @@ def run():
     #  GÉNÉRATEUR D'IMAGES
 
     # Chemin pour les images
-    image_folder = r"streamlit_app\assets\radios"
+    image_folder = directory + "/streamlit_app/assets/radios"
 
     image_files = [f for f in os.listdir(image_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
 
