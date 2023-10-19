@@ -23,7 +23,7 @@ labels_2_classes = ['Malade', 'Sain']
 
 
 def preprocess_input_model1(img):
-    img = tf.io.decode_png(img, channels=3)
+    # img = tf.io.decode_png(img, channels=3)
     img_resized = tf.image.resize(img, [240, 240])
 
     # img = cv2.resize(img, (240, 240))
@@ -34,7 +34,7 @@ def preprocess_input_model1(img):
 
 
 def preprocess_input_model2(img):
-    img = tf.io.decode_png(img, channels=3)
+    # img = tf.io.decode_png(img, channels=3)
     img_resized = tf.image.resize(img, [224, 224])
 
     # img = cv2.resize(img, (224, 224))
