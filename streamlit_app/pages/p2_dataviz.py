@@ -12,7 +12,6 @@ directory = path.Path(__file__).parent.parent.parent
 sidebar_name = "📊 DataViz"
 
 # Creation des variables pour les images qu'on va charger plus tard
-provenance = Image.open(directory + "/streamlit_app/assets/images/provenance.png")
 radios_classe = Image.open(directory + "/streamlit_app/assets/images/images_classes.png")
 moyennes = Image.open(directory + "/streamlit_app/assets/images/moyenne_type.png")
 diff = Image.open(directory + "/streamlit_app/assets/images/diff.png")
