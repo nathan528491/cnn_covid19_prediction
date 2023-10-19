@@ -2,7 +2,7 @@
 
 ## Présentation
 
-Ce projet fait partie de la formation [Data Scientist Bootcamp](https://datascientest.com/en/data-scientist-course) dispensée par [DataScientest](https://datascientest.com/) et co-certifiée avec MinesParisTech PSL.
+Ce projet fait partie de la formation Data Scientist Bootcamp dispensée par DataScientest et co-certifiée avec MinesParisTech PSL.
 
 Contributeurs au projet :
 - Juliette Greco
@@ -31,7 +31,9 @@ pip install -r requirements.txt
 
 ## Streamlit App
 
-Pour lancer l'application :
+L'application est [**disponible en ligne ici**](https://nathan528491-cnn-covid19-prediction-app-n714sj.streamlit.app/).
+
+Pour lancer l'application en local :
 
 - Si vous voulez utiliser la partie démonstration du modèle avec un modèle, il faut d'abord télécharger le dataset et sauvegarder les modèles VGG16 :
 
