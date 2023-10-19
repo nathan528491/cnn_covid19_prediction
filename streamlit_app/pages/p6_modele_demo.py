@@ -12,6 +12,11 @@ from keras.models import load_model
 from keras.applications.efficientnet import preprocess_input
 
 from streamlit_app.config import st_markdown
+import path
+import sys
+
+dir = path.Path(__file__).parent.parent.parent
+sys.path.append(dir)
 
 sidebar_name = "💻 Démo du modèle"
 

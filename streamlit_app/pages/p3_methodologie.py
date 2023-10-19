@@ -3,6 +3,11 @@ import streamlit as st
 from PIL import Image
 from streamlit_app.texts import methodologie
 from streamlit_app.config import st_markdown
+import path
+import sys
+
+dir = path.Path(__file__).parent.parent.parent
+sys.path.append(dir)
 
 sidebar_name = "🧪 Méthodologie et Préprocessing"
 
